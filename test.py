@@ -8,12 +8,8 @@ with open("/home/osboxes/Desktop/mvc.data") as f:
     with driver.session() as session:
         for line in f:
             a = line.split('\t')
-            print a
             result = session.run(
-                "MERGE (r:Rid {id:'" + a[1] + "' }) MERGE (c:Cid { id: '" + a[2] + "'})  CREATE UNIQUE  (r)-[:HAS]->(c);")
-            print a
-
-
+                "MERGE (r:Rid {id:'" + a[1] + "' }) MERGE (c:Cid { id: '" + a[2] + "'})  MERGE  (r)-[:HAS]->(c);")
 
 
 with open("/home/osboxes/Desktop/moc.data") as f:
@@ -21,10 +17,8 @@ with open("/home/osboxes/Desktop/moc.data") as f:
     with driver.session() as session:
         for line in f:
             a = line.split('\t')
-            print a
             result = session.run(
-                "MERGE (o:Oid {id:'" + a[1] + "' }) MERGE (c:Cid { id: '" + a[2] + "'})  CREATE UNIQUE  (o)-[:HAS]->(c);")
-            print a
+                "MERGE (o:Oid {id:'" + a[1] + "' }) MERGE (c:Cid { id: '" + a[2] + "'})  MERGE  (o)-[:HAS]->(c);")
 
 
 
